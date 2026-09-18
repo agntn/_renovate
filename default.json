@@ -1,0 +1,79 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": [
+    "Shared Renovate preset for agntn libraries.",
+    "Pins every dependency except peer ranges, waits three days after an npm release, automerges patches after CI, batches minors on Monday morning in Europe/Warsaw, and holds majors on the Dependency Dashboard.",
+    "Host SDKs stay grouped: @oh-my-pi/* and @earendil-works/*."
+  ],
+  "extends": [
+    "config:best-practices",
+    ":pinAllExceptPeerDependencies",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "timezone": "Europe/Warsaw",
+  "labels": ["dependencies"],
+  "prConcurrentLimit": 5,
+  "minimumReleaseAge": "3 days",
+  "separateMajorMinor": true,
+  "separateMinorPatch": true,
+  "ignorePaths": ["**/.output/**"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Automerge patches after CI",
+      "matchUpdateTypes": ["patch", "digest", "pin"],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
+      "description": "One weekly PR for minors",
+      "matchUpdateTypes": ["minor"],
+      "groupName": "minor dependencies",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "Majors wait on the Dependency Dashboard",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Keep Oh My Pi packages in one PR",
+      "matchPackageNames": ["@oh-my-pi/**"],
+      "groupName": "oh-my-pi",
+      "automerge": false
+    },
+    {
+      "description": "Keep Earendil Pi packages in one PR",
+      "matchPackageNames": ["@earendil-works/**"],
+      "groupName": "earendil-works",
+      "automerge": false
+    },
+    {
+      "description": "Keep the oxlint toolchain in one PR",
+      "matchPackageNames": ["oxlint", "oxfmt", "oxlint-tsgolint", "@agntn/ox"],
+      "groupName": "oxlint"
+    },
+    {
+      "description": "Keep Vitest in one PR",
+      "matchPackageNames": ["vitest", "@vitest/**"],
+      "groupName": "vitest"
+    },
+    {
+      "description": "packageManager is its own PR",
+      "matchDepTypes": ["packageManager"],
+      "groupName": "package manager",
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "GitHub Actions together, no automerge",
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": false
+    }
+  ]
+}

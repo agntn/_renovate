@@ -58,6 +58,11 @@
       "groupName": "oxlint"
     },
     {
+      "description": "Keep icon sets in one PR",
+      "matchPackageNames": ["@iconify-json/**"],
+      "groupName": "icons"
+    },
+    {
       "description": "Keep Vitest in one PR",
       "matchPackageNames": ["vitest", "@vitest/**"],
       "groupName": "vitest"

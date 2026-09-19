@@ -17,7 +17,7 @@ Pins everything except peer ranges. Waits 3 days after an npm release before it 
 
 Patches automerge after CI. Minors land in one PR on Monday morning, Warsaw time. Majors sit on the Dependency Dashboard until somebody checks the box.
 
-`@oh-my-pi/*` and `@earendil-works/*` stay in their own PRs. Same for oxlint, Vitest, GitHub Actions, and the `packageManager` field. One PR per host SDK, not twenty.
+`@oh-my-pi/*` and `@earendil-works/*` stay in their own PRs. Same for icon sets (`@iconify-json/*`), oxlint, Vitest, GitHub Actions, and the `packageManager` field. One PR per host SDK, not twenty.
 
 Do not run Dependabot version updates next to this. Alerts for vulnerabilities can stay.
 

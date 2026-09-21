@@ -58,6 +58,11 @@
       "groupName": "oxlint"
     },
     {
+      "description": "Keep agntn packages in one PR",
+      "matchPackageNames": ["@agntn/**"],
+      "groupName": "agntn"
+    },
+    {
       "description": "Keep icon sets in one PR",
       "matchPackageNames": ["@iconify-json/**"],
       "groupName": "icons"

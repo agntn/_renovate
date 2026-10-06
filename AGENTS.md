@@ -6,7 +6,7 @@ Shared Renovate preset for the agntn org. This is not a TypeScript package.
 
 - Private shareable config repository.
 - Consumers extend `local>agntn/_renovate`, which resolves `default.json`.
-- Mend Renovate is not installed on the `agntn` org yet. Version PRs will not appear until it is installed and this private repo is in the app selection.
+- Mend Renovate is installed on the `agntn` org. It keeps the Dependency Dashboard in issue #1.
 
 ## Rules
 

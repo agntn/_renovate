@@ -15,7 +15,7 @@ Shared Renovate config for agntn packages. Other repos inherit it. They do not c
 
 Pins everything except peer ranges. Waits 3 days after an npm release before it opens a PR. That delay is boring and I want it.
 
-Patches automerge after CI. Minors land in one PR on Monday morning, Warsaw time. Majors sit on the Dependency Dashboard until somebody checks the box.
+Patches and minors wait for Monday morning, Warsaw time, one PR each. A lone patch on a Thursday used to cost a full docs build, and nobody visits a docs site for its lockfile. The patch PR still automerges after CI. Security fixes skip the line. Majors sit on the Dependency Dashboard until somebody checks the box.
 
 `@oh-my-pi/*` and `@earendil-works/*` stay in their own PRs. Same for icon sets (`@iconify-json/*`), oxlint, Vitest, GitHub Actions, and the `packageManager` field. One PR per host SDK, not twenty.
 

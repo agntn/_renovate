@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": [
     "Shared Renovate preset for agntn libraries.",
-    "Pins every dependency except peer ranges, waits three days after an npm release, automerges patches after CI, batches minors on Monday morning in Europe/Warsaw, and holds majors on the Dependency Dashboard.",
+    "Pins every dependency except peer ranges, waits three days after an npm release, batches patches and minors into one Monday morning PR each in Europe/Warsaw, automerges patches after CI, and holds majors on the Dependency Dashboard. Security fixes skip the window.",
     "Host SDKs stay grouped: @oh-my-pi/* and @earendil-works/*."
   ],
   "extends": [
@@ -34,6 +34,13 @@
       "matchUpdateTypes": ["minor"],
       "groupName": "minor dependencies",
       "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "One weekly PR for patches",
+      "matchUpdateTypes": ["patch", "digest"],
+      "groupName": "patch dependencies",
+      "schedule": ["before 6am on monday"],
+      "updateNotScheduled": false
     },
     {
       "description": "Majors wait on the Dependency Dashboard",

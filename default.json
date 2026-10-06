@@ -39,7 +39,8 @@
       "description": "One weekly PR for patches",
       "matchUpdateTypes": ["patch", "digest"],
       "groupName": "patch dependencies",
-      "schedule": ["before 6am on monday"]
+      "schedule": ["before 6am on monday"],
+      "updateNotScheduled": false
     },
     {
       "description": "Majors wait on the Dependency Dashboard",
